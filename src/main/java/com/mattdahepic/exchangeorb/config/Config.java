@@ -62,7 +62,7 @@ public class Config {
         ironPerXRedstone = config.get(Configuration.CATEGORY_GENERAL,"ironPerXRedstone",ironPerXRedstone,"Iron to be the amount of redstone specified in xRedstone",1,8).getInt(ironPerXRedstone);
         xRedstone = config.get(Configuration.CATEGORY_GENERAL,"xRedstone",xRedstone,"Redstone per the amount of iron specified in ironPerXRedstone",1,8).getInt(xRedstone);
         orbHasDurability = config.getBoolean("orbHasDurability",Configuration.CATEGORY_GENERAL,orbHasDurability,"If this value is true, the Exchange Orb will have limited uses. You must set a number or uses in orbDurability");
-        orbDurability = config.getInt("orbDurability",Configuration.CATEGORY_GENERAL,orbDurability,2,999,"The number of uses an Exchange Orb has. orbHasDurability must be true for this to do anything");
+        orbDurability = config.getInt("orbDurability",Configuration.CATEGORY_GENERAL,orbDurability,1,999,"The number of uses an Exchange Orb has. orbHasDurability must be true for this to do anything");
     }
     private Config() {}
 }
