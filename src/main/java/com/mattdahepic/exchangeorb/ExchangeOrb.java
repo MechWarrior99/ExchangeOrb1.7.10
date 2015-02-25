@@ -8,7 +8,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +18,7 @@ public class ExchangeOrb {
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "1.7.10-1.6";
+    public static final String VERSION = "mc1.7.10-v1.6";
     public static final String NAME = "Exchange Orb";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
