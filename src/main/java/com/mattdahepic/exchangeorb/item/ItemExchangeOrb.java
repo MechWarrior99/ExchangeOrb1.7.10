@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 public class ItemExchangeOrb extends Item {
     public ItemExchangeOrb () {
@@ -16,7 +17,7 @@ public class ItemExchangeOrb extends Item {
         this.setCreativeTab(CreativeTabs.tabAllSearch);
         if(Config.orbHasDurability && Config.orbDurability > 1 ) { //if durability enabled and not one use
             this.setMaxDamage(Config.orbDurability-1);
-            System.out.println("orb has a durability of " + this.getMaxDamage(new ItemStack(this)));
+            //System.out.println("orb has a durability of " + this.getMaxDamage(new ItemStack(this)));
         }
         //TODO: creative tabs
     }
@@ -24,6 +25,10 @@ public class ItemExchangeOrb extends Item {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         this.itemIcon = iconRegister.registerIcon("exchangeorb:exchangeOrb");
+    }
+    @Override
+    public IIcon getIconFromDamage (int meta) {
+        return this.itemIcon;
     }
     @Override
     public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemStack) {
@@ -40,7 +45,7 @@ public class ItemExchangeOrb extends Item {
             return null;
         } else { //if infinite
             //System.out.println("infinite, returning input");
-            return stack;
+            return new ItemStack(this);
         }
     }
 }
