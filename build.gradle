@@ -27,6 +27,8 @@ minecraft {
 }
 
 dependencies {
+    //compile 'com.mattdahepic.mdecore:mdecore:v1.0-mc1.7.10:dev'
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
@@ -61,15 +63,17 @@ processResources
         exclude 'mcmod.info'
     }
 }
-
 task devJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'dev'
 }
 
-
 artifacts {
     archives devJar
 }
-
-sourceSets { main { output.resourcesDir = output.classesDir } }
+apply plugin: 'idea'
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}

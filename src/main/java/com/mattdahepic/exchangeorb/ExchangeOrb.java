@@ -12,7 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 
-@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION,guiFactory = "com.mattdahepic.exchangeorb.config.ExchangeOrbConfigFactory")
+@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[v1.0-mc1.7.10,);")
 public class ExchangeOrb {
     @Mod.Instance("exchangeorb")
     public static ExchangeOrb instance;
@@ -23,11 +23,8 @@ public class ExchangeOrb {
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
     public static CommonProxy proxy;
-    //public static ClientProxy clientProxy;
 
     public static Configuration configFile;
-
-    //blocks
 
     //item
     public static Item itemExchangeOrb;
