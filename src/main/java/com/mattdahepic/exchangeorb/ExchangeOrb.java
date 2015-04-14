@@ -4,6 +4,7 @@ import com.mattdahepic.exchangeorb.config.Config;
 import com.mattdahepic.exchangeorb.item.ItemExchangeOrb;
 import com.mattdahepic.exchangeorb.network.PacketHandler;
 import com.mattdahepic.exchangeorb.network.SyncPacket;
+import com.mattdahepic.mdecore.helpers.LogHelper;
 import com.mattdahepic.mdecore.update.UpdateChecker;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -17,7 +18,6 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
-import org.apache.logging.log4j.LogManager;
 
 @Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[v1.0-mc1.7.10,);")
 public class ExchangeOrb {
@@ -52,7 +52,7 @@ public class ExchangeOrb {
     }
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        LogManager.getLogger().info("Ready to transmute!");
+        LogHelper.info(MODID,"Ready to transmute!");
     }
     @Mod.EventHandler
     public void loadComplete (FMLLoadCompleteEvent event) {
@@ -61,10 +61,16 @@ public class ExchangeOrb {
     @Mod.EventHandler
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.worldObj.isRemote) {
+            System.out.println("world is not remote, running on server");
             if (event.player instanceof EntityPlayerMP) {
+                System.out.println("player is instance of player mp, sending packet");
                 IMessage sync = new SyncPacket.SyncMessage(Config.orbHasDurability,Config.orbDurability,Config.charcoalPerXCoal,Config.xCoal,Config.diamondsPerXEmeralds,Config.xEmeralds,Config.goldPerXDiamonds,Config.xDiamonds,Config.goldPerXLapis,Config.xLapis,Config.ironPerXGold,Config.xGold,Config.ironPerXRedstone,Config.xRedstone);
                 PacketHandler.net.sendTo(sync,(EntityPlayerMP)event.player);
+            } else {
+                System.out.println("player not instance of player mp");
             }
+        } else {
+            System.out.println("world not remote, attempting to run on client");
         }
     }
 }

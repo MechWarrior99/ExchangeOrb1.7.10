@@ -25,6 +25,8 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             Config.xGold = message.xGold;
             Config.ironPerXRedstone = message.ironPerXRedstone;
             Config.xRedstone = message.xRedstone;
+        } else {
+            System.out.println("side not client!");
         }
         return null;
     }
