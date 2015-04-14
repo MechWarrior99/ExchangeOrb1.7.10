@@ -13,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -58,19 +59,14 @@ public class ExchangeOrb {
     public void loadComplete (FMLLoadCompleteEvent event) {
         UpdateChecker.updateCheck(MODID,NAME,"https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.7.10/master/version.txt",VERSION);
     }
-    @Mod.EventHandler
+    @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.worldObj.isRemote) {
-            System.out.println("world is not remote, running on server");
             if (event.player instanceof EntityPlayerMP) {
-                System.out.println("player is instance of player mp, sending packet");
+                LogHelper.info(MODID,"Sending configuration settings packet from the server to the connecting client "+event.player.getDisplayName()+".");
                 IMessage sync = new SyncPacket.SyncMessage(Config.orbHasDurability,Config.orbDurability,Config.charcoalPerXCoal,Config.xCoal,Config.diamondsPerXEmeralds,Config.xEmeralds,Config.goldPerXDiamonds,Config.xDiamonds,Config.goldPerXLapis,Config.xLapis,Config.ironPerXGold,Config.xGold,Config.ironPerXRedstone,Config.xRedstone);
-                PacketHandler.net.sendTo(sync,(EntityPlayerMP)event.player);
-            } else {
-                System.out.println("player not instance of player mp");
+                PacketHandler.net.sendTo(sync, (EntityPlayerMP) event.player);
             }
-        } else {
-            System.out.println("world not remote, attempting to run on client");
         }
     }
 }

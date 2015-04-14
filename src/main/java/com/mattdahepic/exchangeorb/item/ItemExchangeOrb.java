@@ -15,8 +15,13 @@ public class ItemExchangeOrb extends Item {
         this.setUnlocalizedName("exchangeOrb");
         this.setMaxStackSize(1);
         this.setCreativeTab(CreativeTabs.tabAllSearch);
+    }
+    @Override
+    public int getMaxDamage () {
         if(Config.orbHasDurability && Config.orbDurability > 1 ) { //if durability enabled and not one use
-            this.setMaxDamage(Config.orbDurability-1);
+             return (Config.orbDurability-1);
+        } else {
+            return 0;
         }
     }
     @Override

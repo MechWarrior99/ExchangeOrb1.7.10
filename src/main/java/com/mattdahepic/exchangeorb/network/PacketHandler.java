@@ -14,7 +14,6 @@ public class PacketHandler {
     private static int nextPacketId = 0;
     public static void registerMessage (Class packet,Class message) {
         net.registerMessage(packet,message,nextPacketId,Side.CLIENT);
-        net.registerMessage(packet,message,nextPacketId,Side.SERVER);
         nextPacketId++;
     }
 }

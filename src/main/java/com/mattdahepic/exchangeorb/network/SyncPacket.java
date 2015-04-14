@@ -1,6 +1,8 @@
 package com.mattdahepic.exchangeorb.network;
 
+import com.mattdahepic.exchangeorb.ExchangeOrb;
 import com.mattdahepic.exchangeorb.config.Config;
+import com.mattdahepic.mdecore.helpers.LogHelper;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -10,7 +12,7 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
     @Override
     public IMessage onMessage (SyncMessage message,MessageContext ctx) {
         if (ctx.side.isClient()) {
-            System.out.println("Recieved config sync packet!");
+            LogHelper.info(ExchangeOrb.MODID,"Recieved a configuration syncronization packet from the server. Changing config values accordingly...");
             Config.orbHasDurability = message.orbHasDurability;
             Config.orbDurability = message.orbDurability;
             Config.charcoalPerXCoal = message.charcoalPerXCoal;
@@ -25,8 +27,6 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             Config.xGold = message.xGold;
             Config.ironPerXRedstone = message.ironPerXRedstone;
             Config.xRedstone = message.xRedstone;
-        } else {
-            System.out.println("side not client!");
         }
         return null;
     }
