@@ -19,7 +19,6 @@ public class ItemExchangeOrb extends Item {
             this.setMaxDamage(Config.orbDurability-1);
             //System.out.println("orb has a durability of " + this.getMaxDamage(new ItemStack(this)));
         }
-        //TODO: creative tabs
     }
     @Override
     @SideOnly(Side.CLIENT)

@@ -2,12 +2,19 @@ package com.mattdahepic.exchangeorb;
 
 import com.mattdahepic.exchangeorb.config.Config;
 import com.mattdahepic.exchangeorb.item.ItemExchangeOrb;
+import com.mattdahepic.exchangeorb.network.DurabilitySyncPacket;
+import com.mattdahepic.exchangeorb.network.PacketHandler;
+import com.mattdahepic.mdecore.update.UpdateChecker;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +25,7 @@ public class ExchangeOrb {
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "mc1.7.10-v1.6.1";
+    public static final String VERSION = "v1.7-mc1.7.10";
     public static final String NAME = "Exchange Orb";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
@@ -37,6 +44,7 @@ public class ExchangeOrb {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        PacketHandler.initPackets();
         itemExchangeOrb = new ItemExchangeOrb();
         proxy.registerBlocksItems();
         proxy.registerRecipes();
@@ -45,5 +53,18 @@ public class ExchangeOrb {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         LogManager.getLogger().info("Ready to transmute!");
+    }
+    @Mod.EventHandler
+    public void loadComplete (FMLLoadCompleteEvent event) {
+        UpdateChecker.updateCheck(MODID,NAME,,VERSION);
+    }
+    @Mod.EventHandler
+    public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
+        if (!event.player.worldObj.isRemote) {
+            if (event.player instanceof EntityPlayerMP) {
+                IMessage message = new DurabilitySyncPacket.DurabilitySyncMessage(Config.orbHasDurability,Config.orbDurability);
+                PacketHandler.net.sendTo(message,(EntityPlayerMP)event.player);
+            }
+        }
     }
 }
