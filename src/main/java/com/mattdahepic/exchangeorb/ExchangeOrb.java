@@ -2,8 +2,8 @@ package com.mattdahepic.exchangeorb;
 
 import com.mattdahepic.exchangeorb.config.Config;
 import com.mattdahepic.exchangeorb.item.ItemExchangeOrb;
-import com.mattdahepic.exchangeorb.network.DurabilitySyncPacket;
 import com.mattdahepic.exchangeorb.network.PacketHandler;
+import com.mattdahepic.exchangeorb.network.SyncPacket;
 import com.mattdahepic.mdecore.update.UpdateChecker;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -62,8 +62,8 @@ public class ExchangeOrb {
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
         if (!event.player.worldObj.isRemote) {
             if (event.player instanceof EntityPlayerMP) {
-                IMessage message = new DurabilitySyncPacket.DurabilitySyncMessage(Config.orbHasDurability,Config.orbDurability);
-                PacketHandler.net.sendTo(message,(EntityPlayerMP)event.player);
+                IMessage sync = new SyncPacket.SyncMessage(Config.orbHasDurability,Config.orbDurability,Config.charcoalPerXCoal,Config.xCoal,Config.diamondsPerXEmeralds,Config.xEmeralds,Config.goldPerXDiamonds,Config.xDiamonds,Config.goldPerXLapis,Config.xLapis,Config.ironPerXGold,Config.xGold,Config.ironPerXRedstone,Config.xRedstone);
+                PacketHandler.net.sendTo(sync,(EntityPlayerMP)event.player);
             }
         }
     }
