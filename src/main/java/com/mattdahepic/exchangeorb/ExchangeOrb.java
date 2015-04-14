@@ -56,7 +56,7 @@ public class ExchangeOrb {
     }
     @Mod.EventHandler
     public void loadComplete (FMLLoadCompleteEvent event) {
-        UpdateChecker.updateCheck(MODID,NAME,,VERSION);
+        UpdateChecker.updateCheck(MODID,NAME,"https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.7.10/master/version.txt",VERSION);
     }
     @Mod.EventHandler
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
