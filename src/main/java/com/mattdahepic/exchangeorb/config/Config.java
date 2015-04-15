@@ -22,8 +22,8 @@ public class Config {
      */
 
     //defaults
-    public static final int MINIMUM_VALUE = 1;
-    public static final int MAXIMUM_VALUE = 8;
+    public static final int MIN = 1;
+    public static final int MAX = 8;
 
     public static final String CATEGORY_CHARCOAL_COAL = "charcoal_coal";
     public static int charcoalCoal_Charcoal = 4;
@@ -82,20 +82,20 @@ public class Config {
         }
     }
     public static void processConfig(Configuration c) {
-        charcoalCoal_Charcoal = c.getInt("charcoalCoal_Charcoal",CATEGORY_CHARCOAL_COAL,charcoalCoal_Charcoal,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of coal involved in the charcoal/coal conversion.");
-        charcoalCoal_Coal = c.getInt("charcoalCoal_Coal",CATEGORY_CHARCOAL_COAL,charcoalCoal_Coal,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of coal involved in the charcoal/coal conversion.");
-        coalIron_Coal = c.getInt("coalIron_Coal",CATEGORY_COAL_IRON,coalIron_Coal,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of coal involved in the coal/iron conversion.");
-        coalIron_Iron = c.getInt("coalIron_Iron",CATEGORY_COAL_IRON,coalIron_Iron,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of iron involved in the coal/iron conversion.");
-        ironRedstone_Iron = c.getInt("ironRedstone_Iron",CATEGORY_IRON_REDSTONE,ironRedstone_Iron,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of iron involved in the iron/redstone conversion.");
-        ironRedstone_Redstone = c.getInt("ironRedstone_Redstone",CATEGORY_IRON_REDSTONE,ironRedstone_Redstone,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of redstone involved in the iron/redstone conversion.");
-        redstoneLapis_Redstone = c.getInt("redstoneLapis_Redstone",CATEGORY_REDSTONE_LAPIS,redstoneLapis_Redstone,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of redstone involved in the redstone/lapis conversion.");
-        redstoneLapis_Lapis = c.getInt("redstoneLapis_Lapis",CATEGORY_REDSTONE_LAPIS,redstoneLapis_Lapis,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of lapis involved in the redstone/lapis conversion.");
-        lapisGold_Lapis = c.getInt("lapisGold_Lapis",CATEGORY_LAPIS_GOLD,lapisGold_Lapis,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of lapis involved in the lapis/gold conversion.");
-        lapisGold_Gold = c.getInt("lapisGold_Gold",CATEGORY_LAPIS_GOLD,lapisGold_Gold,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of gold involved in the lapis/gold conversion.");
-        goldDiamond_Gold = c.getInt("goldDiamond_Gold",CATEGORY_GOLD_DIAMOND,goldDiamond_Gold,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of gold involved in the gold/diamond conversion.");
-        goldDiamond_Diamond = c.getInt("goldDiamond_Diamond",CATEGORY_GOLD_DIAMOND,goldDiamond_Diamond,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of diamonds involved in the gold/diamond conversion.");
-        diamondEmerald_Diamond = c.getInt("diamondEmerald_Diamond",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Diamond,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of diamonds involved in the diamond/emerald conversion.");
-        diamondEmerald_Emerald = c.getInt("diamondEmerald_Emerald",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Emerald,MINIMUM_VALUE,MAXIMUM_VALUE,"Amount of emeralds involved in the diamond/emerald conversion.");
+        charcoalCoal_Charcoal = c.getInt("charcoalCoal_Charcoal",CATEGORY_CHARCOAL_COAL,charcoalCoal_Charcoal, MIN, MAX,"Amount of coal involved in the charcoal/coal conversion.");
+        charcoalCoal_Coal = c.getInt("charcoalCoal_Coal",CATEGORY_CHARCOAL_COAL,charcoalCoal_Coal, MIN, MAX,"Amount of coal involved in the charcoal/coal conversion.");
+        coalIron_Coal = c.getInt("coalIron_Coal",CATEGORY_COAL_IRON,coalIron_Coal, MIN, MAX,"Amount of coal involved in the coal/iron conversion.");
+        coalIron_Iron = c.getInt("coalIron_Iron",CATEGORY_COAL_IRON,coalIron_Iron, MIN, MAX,"Amount of iron involved in the coal/iron conversion.");
+        ironRedstone_Iron = c.getInt("ironRedstone_Iron",CATEGORY_IRON_REDSTONE,ironRedstone_Iron, MIN, MAX,"Amount of iron involved in the iron/redstone conversion.");
+        ironRedstone_Redstone = c.getInt("ironRedstone_Redstone",CATEGORY_IRON_REDSTONE,ironRedstone_Redstone, MIN, MAX,"Amount of redstone involved in the iron/redstone conversion.");
+        redstoneLapis_Redstone = c.getInt("redstoneLapis_Redstone",CATEGORY_REDSTONE_LAPIS,redstoneLapis_Redstone, MIN, MAX,"Amount of redstone involved in the redstone/lapis conversion.");
+        redstoneLapis_Lapis = c.getInt("redstoneLapis_Lapis",CATEGORY_REDSTONE_LAPIS,redstoneLapis_Lapis, MIN, MAX,"Amount of lapis involved in the redstone/lapis conversion.");
+        lapisGold_Lapis = c.getInt("lapisGold_Lapis",CATEGORY_LAPIS_GOLD,lapisGold_Lapis, MIN, MAX,"Amount of lapis involved in the lapis/gold conversion.");
+        lapisGold_Gold = c.getInt("lapisGold_Gold",CATEGORY_LAPIS_GOLD,lapisGold_Gold, MIN, MAX,"Amount of gold involved in the lapis/gold conversion.");
+        goldDiamond_Gold = c.getInt("goldDiamond_Gold",CATEGORY_GOLD_DIAMOND,goldDiamond_Gold, MIN, MAX,"Amount of gold involved in the gold/diamond conversion.");
+        goldDiamond_Diamond = c.getInt("goldDiamond_Diamond",CATEGORY_GOLD_DIAMOND,goldDiamond_Diamond, MIN, MAX,"Amount of diamonds involved in the gold/diamond conversion.");
+        diamondEmerald_Diamond = c.getInt("diamondEmerald_Diamond",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Diamond, MIN, MAX,"Amount of diamonds involved in the diamond/emerald conversion.");
+        diamondEmerald_Emerald = c.getInt("diamondEmerald_Emerald",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Emerald, MIN, MAX,"Amount of emeralds involved in the diamond/emerald conversion.");
         orbHasDurability = c.getBoolean("orbHasDurability",CATEGORY_DURABILITY,orbHasDurability,"Does the Exchange Orb have a limited amount of uses? Set the amount of uses in orbDurability.");
         orbDurability = c.getInt("orbDurability",CATEGORY_DURABILITY,orbDurability,1,999,"Amount of uses the exchange orb has, if durability is enabled.");
     }

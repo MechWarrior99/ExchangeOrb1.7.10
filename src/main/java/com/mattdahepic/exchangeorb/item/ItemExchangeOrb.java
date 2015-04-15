@@ -18,7 +18,7 @@ public class ItemExchangeOrb extends Item {
     }
     @Override
     public int getMaxDamage () {
-        if(Config.orbHasDurability && Config.orbDurability > 1 ) { //if durability enabled and not one use
+        if(isDamageable() && Config.orbDurability > 1) { //if durability enabled and not one use
              return (Config.orbDurability-1);
         } else {
             return 0;
@@ -26,11 +26,8 @@ public class ItemExchangeOrb extends Item {
     }
     @Override
     public boolean isDamageable () {
-        if (Config.orbHasDurability) {
-            return true;
-        } else {
-            return false;
-        }
+        System.out.println("isDamageable == "+Config.orbHasDurability);
+        return Config.orbHasDurability;
     }
     @Override
     @SideOnly(Side.CLIENT)
