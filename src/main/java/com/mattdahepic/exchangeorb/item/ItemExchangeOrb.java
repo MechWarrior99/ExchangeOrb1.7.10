@@ -25,6 +25,14 @@ public class ItemExchangeOrb extends Item {
         }
     }
     @Override
+    public boolean isDamageable () {
+        if (Config.orbHasDurability) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
         this.itemIcon = iconRegister.registerIcon("exchangeorb:exchangeOrb");

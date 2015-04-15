@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapelessConversionRecipeHandler /*extends ShapelessOreRecipe*/ { //TODO: is this needed?
-    public static void registerRecipes (ItemStack highItem,ItemStack lowItem,int highCount,int lowCount) {
+    public static void registerRecipes (ItemStack lowItem,ItemStack highItem,int lowCount,int highCount) { //TODO: fix this order
         GameRegistry.addRecipe(recipeHighToLow(highItem,lowItem,highCount,lowCount));
         GameRegistry.addRecipe(recipeLowToHigh(highItem,lowItem,highCount,lowCount));
     }
@@ -19,7 +19,7 @@ public class ShapelessConversionRecipeHandler /*extends ShapelessOreRecipe*/ { /
 
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(new ItemStack(ExchangeOrb.itemExchangeOrb,1,32767));
-        for (int i = 0; i <= highCount; i++) {
+        for (int i = 0; i < highCount; i++) {
             input.add(highItem);
         }
 
@@ -31,7 +31,7 @@ public class ShapelessConversionRecipeHandler /*extends ShapelessOreRecipe*/ { /
 
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(new ItemStack(ExchangeOrb.itemExchangeOrb,1,32767));
-        for (int i = 1; i <= lowCount; i++) {
+        for (int i = 0; i < lowCount; i++) {
             input.add(lowItem);
         }
 
