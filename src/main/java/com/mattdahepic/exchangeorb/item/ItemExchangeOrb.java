@@ -26,7 +26,7 @@ public class ItemExchangeOrb extends Item {
     }
     @Override
     public boolean isDamageable () {
-        System.out.println("isDamageable == "+Config.orbHasDurability);
+        this.setMaxDamage(0);
         return Config.orbHasDurability;
     }
     @Override
@@ -43,8 +43,12 @@ public class ItemExchangeOrb extends Item {
         return false;
     }
     @Override
+    public boolean hasContainerItem (ItemStack item) {
+        return true;
+    }
+    @Override
     public ItemStack getContainerItem(ItemStack stack) {
-        if(isDamageable()) { //if more than one use, but not infinite
+        if(isDamageable() && Config.orbDurability > 1) { //if more than one use, but not infinite
             return new ItemStack(stack.getItem(),1,stack.getItemDamage()+1);
         } else if (Config.orbDurability == 1) { //if one use
             return null;
