@@ -4,8 +4,11 @@ import com.mattdahepic.exchangeorb.config.Config;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-public class RecipeConversions {
+public class RecipeRegisterer {
     public static void registerRecipes  () {
+        //orb
+        ShapedOrbRecipeHandler.registerRecipes(Config.orbHardMode);
+        //converions
         ItemStack charcoal = new ItemStack(Items.coal,1,1);
         ItemStack coal = new ItemStack(Items.coal,1,0);
         ItemStack iron = new ItemStack(Items.iron_ingot,1,0);

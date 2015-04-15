@@ -53,11 +53,10 @@ public class Config {
     public static int diamondEmerald_Diamond = 2;
     public static int diamondEmerald_Emerald = 1;
 
-    public static String CATEGORY_DURABILITY = "durability";
+    public static String CATEGORY_ORB = "orb";
     public static boolean orbHasDurability = false;
     public static int orbDurability = 200;
-
-    //TODO: hard recipe
+    public static boolean orbHardMode = false;
 
     public static void load(FMLPreInitializationEvent event) {
         ExchangeOrb.configFile = new Configuration(event.getSuggestedConfigurationFile());
@@ -96,8 +95,9 @@ public class Config {
         goldDiamond_Diamond = c.getInt("goldDiamond_Diamond",CATEGORY_GOLD_DIAMOND,goldDiamond_Diamond, MIN, MAX,"Amount of diamonds involved in the gold/diamond conversion.");
         diamondEmerald_Diamond = c.getInt("diamondEmerald_Diamond",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Diamond, MIN, MAX,"Amount of diamonds involved in the diamond/emerald conversion.");
         diamondEmerald_Emerald = c.getInt("diamondEmerald_Emerald",CATEGORY_DIAMOND_EMERALD,diamondEmerald_Emerald, MIN, MAX,"Amount of emeralds involved in the diamond/emerald conversion.");
-        orbHasDurability = c.getBoolean("orbHasDurability",CATEGORY_DURABILITY,orbHasDurability,"Does the Exchange Orb have a limited amount of uses? Set the amount of uses in orbDurability.");
-        orbDurability = c.getInt("orbDurability",CATEGORY_DURABILITY,orbDurability,1,999,"Amount of uses the exchange orb has, if durability is enabled.");
+        orbHasDurability = c.getBoolean("orbHasDurability", CATEGORY_ORB,orbHasDurability,"Does the Exchange Orb have a limited amount of uses? Set the amount of uses in orbDurability.");
+        orbDurability = c.getInt("orbDurability", CATEGORY_ORB,orbDurability,1,999,"Amount of uses the exchange orb has, if durability is enabled.");
+        orbHardMode = c.getBoolean("orbHardMode",CATEGORY_ORB,orbHardMode,"Should the orb require a nether star to create instead of a stone block?");
     }
     private Config() {}
 }

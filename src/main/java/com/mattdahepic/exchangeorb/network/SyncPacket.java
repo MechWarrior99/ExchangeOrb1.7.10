@@ -29,6 +29,7 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             Config.diamondEmerald_Emerald = message.diamondEmerald_Emerald;
             Config.orbHasDurability = message.orbHasDurability;
             Config.orbDurability = message.orbDurability;
+            Config.orbHardMode = message.orbHardMode;
         }
         return null;
     }
@@ -49,8 +50,9 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
         private int diamondEmerald_Emerald;
         private boolean orbHasDurability;
         private int orbDurability;
+        private boolean orbHardMode;
         public SyncMessage() {}
-        public SyncMessage(int charcoalCoal_Charcoal,int charcoalCoal_Coal,int coalIron_Coal,int coalIron_Iron,int ironRedstone_Iron,int ironRedstone_Redstone,int redstoneLapis_Redstone,int redstoneLapis_Lapis, int lapisGold_Lapis,int lapisGold_Gold,int goldDiamond_Gold,int goldDiamond_Diamond,int diamondEmerald_Diamond,int diamondEmerald_Emerald,boolean orbHasDurability,int orbDurability) {
+        public SyncMessage(int charcoalCoal_Charcoal,int charcoalCoal_Coal,int coalIron_Coal,int coalIron_Iron,int ironRedstone_Iron,int ironRedstone_Redstone,int redstoneLapis_Redstone,int redstoneLapis_Lapis, int lapisGold_Lapis,int lapisGold_Gold,int goldDiamond_Gold,int goldDiamond_Diamond,int diamondEmerald_Diamond,int diamondEmerald_Emerald,boolean orbHasDurability,int orbDurability,boolean orbHardMode) {
             this.charcoalCoal_Charcoal = charcoalCoal_Charcoal;
             this.charcoalCoal_Coal = charcoalCoal_Coal;
             this.coalIron_Coal = coalIron_Coal;
@@ -67,6 +69,7 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             this.diamondEmerald_Emerald = diamondEmerald_Emerald;
             this.orbHasDurability = orbHasDurability;
             this.orbDurability = orbDurability;
+            this.orbHardMode = orbHardMode;
         }
         @Override
         public void fromBytes (ByteBuf buf) {
@@ -86,6 +89,7 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             this.diamondEmerald_Emerald = buf.readInt();
             this.orbHasDurability = buf.readBoolean();
             this.orbDurability = buf.readInt();
+            this.orbHardMode = buf.readBoolean();
         }
         @Override
         public void toBytes (ByteBuf buf) {
@@ -105,6 +109,7 @@ public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessa
             buf.writeInt(diamondEmerald_Emerald);
             buf.writeBoolean(orbHasDurability);
             buf.writeInt(orbDurability);
+            buf.writeBoolean(orbHardMode);
         }
     }
 }

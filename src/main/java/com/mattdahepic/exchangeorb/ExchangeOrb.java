@@ -64,7 +64,7 @@ public class ExchangeOrb {
         if (!event.player.worldObj.isRemote) {
             if (event.player instanceof EntityPlayerMP) {
                 LogHelper.info(MODID,"Sending configuration settings packet from the server to the connecting client "+event.player.getDisplayName()+".");
-                IMessage sync = new SyncPacket.SyncMessage(Config.charcoalCoal_Charcoal,Config.charcoalCoal_Coal,Config.coalIron_Coal,Config.coalIron_Iron,Config.ironRedstone_Iron,Config.ironRedstone_Redstone,Config.redstoneLapis_Redstone,Config.redstoneLapis_Lapis,Config.lapisGold_Lapis,Config.lapisGold_Gold,Config.goldDiamond_Gold,Config.goldDiamond_Diamond,Config.diamondEmerald_Diamond,Config.diamondEmerald_Emerald,Config.orbHasDurability,Config.orbDurability);
+                IMessage sync = new SyncPacket.SyncMessage(Config.charcoalCoal_Charcoal,Config.charcoalCoal_Coal,Config.coalIron_Coal,Config.coalIron_Iron,Config.ironRedstone_Iron,Config.ironRedstone_Redstone,Config.redstoneLapis_Redstone,Config.redstoneLapis_Lapis,Config.lapisGold_Lapis,Config.lapisGold_Gold,Config.goldDiamond_Gold,Config.goldDiamond_Diamond,Config.diamondEmerald_Diamond,Config.diamondEmerald_Emerald,Config.orbHasDurability,Config.orbDurability,Config.orbHardMode);
                 PacketHandler.net.sendTo(sync, (EntityPlayerMP) event.player);
             }
         }
